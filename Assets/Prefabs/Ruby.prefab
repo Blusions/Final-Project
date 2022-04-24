@@ -150,7 +150,6 @@ MonoBehaviour:
   speed: 4
   maxHealth: 5
   timeInvincible: 0.5
-  respawnPosition: {fileID: 0}
   hitParticle: {fileID: 3032662816014629373, guid: 17da090cbd3ec504ba4da073aa459073,
     type: 3}
   healthParticle: {fileID: 2688776450615711917, guid: 96e9cd9955be74842b5d6b2e427ffe16,
@@ -168,6 +167,8 @@ MonoBehaviour:
   lvl1TextObject: {fileID: 0}
   loseTextObject: {fileID: 0}
   winTextObject: {fileID: 0}
+  uiText: {fileID: 0}
+  mainTimer: 20
 --- !u!95 &7835389012148503428
 Animator:
   serializedVersion: 3

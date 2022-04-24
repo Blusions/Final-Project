@@ -230,8 +230,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c355cf67d54abee4aae3b97fd7e93987, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 2
-  timeToChange: 2
+  speed: 1
+  timeToChange: 5
   horizontal: 1
   smokeParticleEffect: {fileID: 7972057267707664465}
   fixedParticleEffect: {fileID: 3032662816014629373, guid: 17da090cbd3ec504ba4da073aa459073,
@@ -269,7 +269,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 9645ade057726c6428a54cc571053c6d, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.4
+  m_Volume: 0.2
   m_Pitch: 1
   Loop: 1
   Mute: 0

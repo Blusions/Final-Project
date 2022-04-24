@@ -14,7 +14,6 @@ public class RubyController : MonoBehaviour
     // ======== HEALTH ==========
     public int maxHealth = 5;
     public float timeInvincible = 2.0f;
-    public Transform respawnPosition;
     public ParticleSystem hitParticle;
     public ParticleSystem healthParticle;
     
@@ -25,6 +24,7 @@ public class RubyController : MonoBehaviour
     public AudioClip hitSound;
     public AudioClip shootingSound;
     public AudioClip loseMusic;
+    public AudioClip timeloseMusic;
     public AudioClip winMusic;
     public AudioSource audioSource;    
 
@@ -62,20 +62,25 @@ public class RubyController : MonoBehaviour
 
     private static int level = 1;
 
+    //===== TIMER ==========
+
+    public Text uiText;
+    public float mainTimer = 45;
 
     // ========= Score =============
     public void ScoreCount(int number)
     {    
       scoreValue = scoreValue + number;
       score.text = "Robots Fixed: " + scoreValue.ToString();
-
+    
       if (level == 1)
       {
           if (scoreValue == 4)
           {
                 lvl1TextObject.SetActive(true);
                 gameOver = true;
-          }  
+          }
+          
       }
 
       if (level == 2)
@@ -84,8 +89,10 @@ public class RubyController : MonoBehaviour
           {
               winTextObject.SetActive(true);
               gameOver = true;
+              speed = 0.0f;
               audioSource.Stop(); 
-          }     
+          }
+
       }
     }
 
@@ -112,6 +119,7 @@ public class RubyController : MonoBehaviour
         loseTextObject.SetActive(false);
         winTextObject.SetActive(false);
         
+        uiText.text = mainTimer.ToString();
     }
 
     void Update()
@@ -180,7 +188,20 @@ public class RubyController : MonoBehaviour
                 }
             }
 
-            
+        mainTimer -= Time.deltaTime;
+        uiText.text = Mathf.Round(mainTimer).ToString(); 
+
+        if (mainTimer <= 0)
+        {
+            mainTimer = 0;
+            uiText.text = "0";
+            loseTextObject.SetActive(true);
+            gameOver = true;
+            speed = 0.0f;
+            rigidbody2d.simulated = false;
+                       
+
+        }             
 
     }
 

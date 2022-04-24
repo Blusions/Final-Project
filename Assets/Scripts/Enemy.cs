@@ -21,6 +21,7 @@ public class Enemy : MonoBehaviour
 	bool repaired = false;
 
 	private RubyController RubyController;
+	private GameObject player;
 	
 	
 	// ===== ANIMATION ========
@@ -47,6 +48,8 @@ public class Enemy : MonoBehaviour
 			RubyController = RubyControllerObject.GetComponent<RubyController>();
 		}
 
+		player = GameObject.FindGameObjectWithTag("RubyController");
+
 	}
 	
 	void Update()
@@ -64,6 +67,13 @@ public class Enemy : MonoBehaviour
 
 		animator.SetFloat("ForwardX", direction.x);
 		animator.SetFloat("ForwardY", direction.y);
+
+		Swarm();
+	}
+
+	private void Swarm()
+	{
+		transform.position = Vector2.MoveTowards(transform.position, player.transform.position, speed * Time.deltaTime);
 	}
 
 	void FixedUpdate()
